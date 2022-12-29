@@ -80,7 +80,7 @@ history = model.fit(
     epochs=40
 )
 
-image_of_two = X[1015]
+image_of_two = X[870]
 prediction = model.predict(image_of_two.reshape(1,400))  # prediction
 print(f" predicting a Two: \n{prediction}")
 print(f" Largest Prediction index: {np.argmax(prediction)}")

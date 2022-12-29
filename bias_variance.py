@@ -21,8 +21,8 @@ How to decide low or high?
 - If valid error is high compare to training error: high variance- overfit (increase reg, get more data, try smaller feature)
 
 NEURAL NETWORK CYCLE
-- is the error well on training set ->(N) it means high bias, get bigger network  --> check training error
-- is the error well on training set ->(Y) is it well on cv -->(N) --> more data --> check training error
+- is the error well on training set ->(N - high bias - underfit!) it means high bias, get bigger network  --> check training error
+- is the error well on training set ->(Y) is it well on cv -->(N - high variance - overfit!) --> more data --> check training error
 - is it well on cv --> (Y) --> OK!
 """
 import numpy as np
@@ -116,9 +116,9 @@ for degree in degrees:
     cv_mse = mean_squared_error(y_cv, yhat) / 2
     cv_mses.append(cv_mse)
 
-    plot_params_mse(degrees, train_mses, cv_mses, baseline)
+plot_params_mse(degrees, train_mses, cv_mses, baseline)
 
-    optimal_degree = np.argmin(cv_mses) + 1
+optimal_degree = np.argmin(cv_mses) + 1
 
 
 ##################
@@ -163,7 +163,7 @@ for reg_param in reg_params:
     cv_mse = mean_squared_error(y_cv, yhat) / 2
     cv_mses.append(cv_mse)
 
-    plot_params_mse(reg_params, train_mses, cv_mses, baseline)
+plot_params_mse(reg_params, train_mses, cv_mses, baseline)
 
 
 ##################
@@ -239,5 +239,5 @@ for percent in percents:
     cv_mse = mean_squared_error(y_cv_sub, yhat) / 2
     cv_mses.append(cv_mse)
 
-    plot_params_mse(num_samples_train_and_cv, train_mses, cv_mses, baseline)
+plot_params_mse(num_samples_train_and_cv, train_mses, cv_mses, baseline)
 
